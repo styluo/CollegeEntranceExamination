@@ -5,6 +5,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!--透明-->
+    <color name="colorTranslucent">#e0000000</color>
+    <color name="colorTransparent">#00000000</color>
+
     <!--各种颜色-->
     <!-- grayscale -->
     <color name="white">#FFFFFF</color>
