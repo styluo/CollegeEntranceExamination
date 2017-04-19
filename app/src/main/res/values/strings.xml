@@ -1,0 +1,34 @@
+<resources>
+    <!--全局-->
+    <string name="app_name">CollegeEntranceExamination</string>
+
+    <!--启动页-->
+    <string name="title_splash">高考拇指帮</string>
+
+    <!--引导页-->
+    <string name="title_guide">进入</string>
+
+    <!--主Activity-->
+    <string-array name="title_main">
+        <item name = "title_main_home">首页</item>
+        <item name = "title_main_shop">志愿</item>
+        <item name = "title_main_service">圈子</item>
+        <item name = "title_main_my">我的</item>
+    </string-array>
+
+    <!--FunType-->
+    <string name="college_info_description">大学信息</string>
+    <string name="college_info_name">大学信息</string>
+    <string name="major_info_description">专业信息</string>
+    <string name="major_info_name">专业信息</string>
+    <string name="simulation_info_description">专业模拟</string>
+    <string name="simulation_info_name">专业模拟</string>
+    <string name="recommend_info_description">专业推荐</string>
+    <string name="recommend_info_name">专业推荐</string>
+    <string name="other_info_description">其他</string>
+    <string name="other_info_name">其他</string>
+
+    <!--MainActivity-->
+    <string name="drawer_navi_header_username">用户名(待开发)</string>
+    <string name="drawer_navi_header_email">邮箱(待开发)</string>
+</resources>
