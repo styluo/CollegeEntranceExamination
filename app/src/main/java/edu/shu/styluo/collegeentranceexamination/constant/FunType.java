@@ -11,11 +11,11 @@ import edu.shu.styluo.collegeentranceexamination.R;
  */
 
 public enum FunType {
-    COLLEGES(R.string.college_info_description, R.string.college_info_name, R.drawable.bg_start),
-    MAJORS(R.string.major_info_description, R.string.major_info_name, R.drawable.bg_start),
-    SIMULATIONS(R.string.simulation_info_description, R.string.simulation_info_name, R.drawable.bg_start),
-    RECOMMENDS(R.string.recommend_info_description, R.string.recommend_info_name, R.drawable.bg_start),
-    OTHERS(R.string.other_info_description, R.string.other_info_name, R.drawable.bg_start);
+    COLLEGES(R.string.college_info_description, R.string.college_info_name, R.drawable.bg_main_grid_first),
+    MAJORS(R.string.major_info_description, R.string.major_info_name, R.drawable.bg_main_grid_second),
+    SIMULATIONS(R.string.simulation_info_description, R.string.simulation_info_name, R.drawable.bg_main_grid_three),
+    RECOMMENDS(R.string.recommend_info_description, R.string.recommend_info_name, R.drawable.bg_main_grid_four),
+    OTHERS(R.string.other_info_description, R.string.other_info_name, R.drawable.bg_main_grid_five);
 
     private final int mFunNameId;
     private final int mFunDesId;

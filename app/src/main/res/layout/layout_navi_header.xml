@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
     android:background="@color/gray"
-    android:paddingBottom="8dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="24dp"
+    android:layout_height="@dimen/header_height"
+    android:paddingBottom="@dimen/header_padding_bottom"
+    android:paddingLeft="@dimen/header_padding_left"
+    android:paddingRight="@dimen/header_padding_right"
+    android:paddingTop="@dimen/header_padding_top"
     android:gravity="bottom">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/header_img_width"
+        android:layout_height="@dimen/header_img_height"
         android:src="@drawable/ci_navi_bg"
-        tools:src="@drawable/ci_navi_bg"/>
+        tools:src="@drawable/ci_navi_bg"
+        android:contentDescription="@string/title_main_navi_header" />
 
     <TextView
         android:id="@+id/tv_navi_username"

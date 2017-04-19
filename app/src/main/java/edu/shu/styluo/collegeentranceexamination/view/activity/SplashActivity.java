@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +23,9 @@ import edu.shu.styluo.collegeentranceexamination.utils.SpUtils;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
+
+import static com.squareup.picasso.MemoryPolicy.NO_CACHE;
+import static com.squareup.picasso.MemoryPolicy.NO_STORE;
 
 /**
  *启动页
@@ -56,7 +61,11 @@ public class SplashActivity extends AppCompatActivity {
      */
     private void checkIsFirstStart(){
         Random random = new Random(SystemClock.elapsedRealtime());
-        mImageViewEntry.setImageResource(mImages[random.nextInt(mImages.length)]);
+
+        Picasso.with(this)
+                .load(mImages[random.nextInt(mImages.length)])
+                .memoryPolicy(NO_CACHE, NO_STORE)
+                .into(mImageViewEntry);
 
         Observable.timer(1000, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())

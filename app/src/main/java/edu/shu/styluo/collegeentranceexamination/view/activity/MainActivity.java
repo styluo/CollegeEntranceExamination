@@ -20,6 +20,7 @@ import java.util.List;
 
 import butterknife.BindArray;
 import butterknife.BindDrawable;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //初始化部分res
     @BindArray(R.array.title_main)
     String[] mTitleMainArray;
+    @BindString(R.string.title_main_toolbar)
+    String mTitleMainName;
 
     @BindDrawable(R.drawable.tab_main_selector)
     Drawable mDrawableTabMain;
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ButterKnife.bind(this);
 
         //ps:必须在setSupportActionBar之前设置
-        mToolBar.setTitle("ToolbarDemo");
+        mToolBar.setTitle(mTitleMainName);
 
         setSupportActionBar(mToolBar);
 
@@ -129,11 +132,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.nav_test:
-                Snackbar.make(mDrawerLayout, "点击事件测试", Snackbar.LENGTH_LONG).show();
+            case R.id.nav_item_seeting:
+                Snackbar.make(mDrawerLayout, "seeting点击事件测试", Snackbar.LENGTH_LONG).show();
+                break;
+            case R.id.nav_item_about:
+                Snackbar.make(mDrawerLayout, "about点击事件测试", Snackbar.LENGTH_LONG).show();
                 break;
         }
 
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }

@@ -48,6 +48,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/layout_navi_header"
-        app:menu="@menu/menu_navi_header">
+        app:menu="@menu/menu_navi_header"
+        app:itemTextColor="@color/item_main_selector"
+        app:itemIconTint="@color/item_main_selector">
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

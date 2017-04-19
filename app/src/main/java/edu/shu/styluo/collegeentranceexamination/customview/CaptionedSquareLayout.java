@@ -18,9 +18,14 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import butterknife.BindColor;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
+
+import static com.squareup.picasso.MemoryPolicy.NO_CACHE;
+import static com.squareup.picasso.MemoryPolicy.NO_STORE;
 
 /**
  * 自定义Layout用于GridView中显示
@@ -74,12 +79,17 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
 
     public void setImageResource(@DrawableRes int drawableResourceId) {
         mDrawable = getResources().getDrawable(drawableResourceId);
-        mImageView.setImageResource(drawableResourceId);
+
+        Picasso.with(getContext())
+                .load(drawableResourceId)
+                .memoryPolicy(NO_CACHE, NO_STORE)
+                .into(mImageView);
+
         updateBlur();
     }
 
     /**
-     * 模糊处理 API >= 17 才能进行模糊处理
+     * 模糊处理 API >= 17 才能进行模糊处理, 这里可能引发OOM
      * @return
      */
     @TargetApi(17)
