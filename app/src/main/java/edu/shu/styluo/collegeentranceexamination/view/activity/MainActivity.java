@@ -24,6 +24,7 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
+import edu.shu.styluo.collegeentranceexamination.utils.StatusBarLightModeUtils;
 import edu.shu.styluo.collegeentranceexamination.view.adapter.MainFragmentPagerAdapter;
 import edu.shu.styluo.collegeentranceexamination.view.fragment.HomeFragment;
 import edu.shu.styluo.collegeentranceexamination.view.fragment.MyFragment;
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        StatusBarLightModeUtils.setStatusBarLightMode(this);
 
         ButterKnife.bind(this);
 

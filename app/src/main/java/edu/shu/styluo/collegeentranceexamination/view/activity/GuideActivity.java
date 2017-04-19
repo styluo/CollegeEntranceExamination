@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
+import edu.shu.styluo.collegeentranceexamination.utils.StatusBarLightModeUtils;
 import edu.shu.styluo.collegeentranceexamination.view.adapter.GuideViewPagerAdapter;
 
 /**
@@ -47,6 +48,8 @@ public class GuideActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
+
+        StatusBarLightModeUtils.setStatusBarLightMode(this);
 
         ButterKnife.bind(this);
 

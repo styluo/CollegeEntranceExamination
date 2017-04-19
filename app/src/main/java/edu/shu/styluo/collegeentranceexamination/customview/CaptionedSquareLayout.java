@@ -18,14 +18,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import butterknife.BindColor;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
-
-import static com.squareup.picasso.MemoryPolicy.NO_CACHE;
-import static com.squareup.picasso.MemoryPolicy.NO_STORE;
 
 /**
  * 自定义Layout用于GridView中显示
@@ -37,8 +31,6 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
     private Drawable mDrawable;
     private TextView mTextView;
     private SquareImageView mImageView;
-
-    @BindColor(R.color.grid_item_scrim)
     int mScrimColor;
 
     public CaptionedSquareLayout(Context context) {
@@ -56,10 +48,18 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
         init(context);
     }
 
+    /**
+     * 外部获取SqureView
+     * @return 返回SquareView
+     */
     public SquareImageView getImageView() {
         return mImageView;
     }
 
+    /**
+     * 外部获取TextView
+     * @return 返回TextView
+     */
     public TextView getTextView() {
         return mTextView;
     }
@@ -77,13 +77,17 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
         updateBlur();
     }
 
+    /**
+     * picasso处理可能导致模糊化处理消失
+     * @param drawableResourceId 资源索引
+     */
     public void setImageResource(@DrawableRes int drawableResourceId) {
         mDrawable = getResources().getDrawable(drawableResourceId);
-
-        Picasso.with(getContext())
+        mImageView.setImageResource(drawableResourceId);
+        /*Picasso.with(getContext())
                 .load(drawableResourceId)
                 .memoryPolicy(NO_CACHE, NO_STORE)
-                .into(mImageView);
+                .into(mImageView);*/
 
         updateBlur();
     }
@@ -134,9 +138,11 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
             final Bitmap newBitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true);
             final Canvas canvas = new Canvas(newBitmap);
             canvas.drawBitmap(blurredBitmap, 0, y, new Paint());
+
             mImageView.setImageBitmap(newBitmap);
         }else {
             //TODO nothing
+
         }
     }
 
@@ -149,6 +155,7 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
         inflate(context, R.layout.layout_captioned, this);
         mTextView = ButterKnife.findById(this, R.id.tv_home_item);
         mImageView = ButterKnife.findById(this, R.id.si_home_item);
+        mScrimColor = getResources().getColor(R.color.grid_item_scrim);
 
         mTextView.addOnLayoutChangeListener(this);
     }

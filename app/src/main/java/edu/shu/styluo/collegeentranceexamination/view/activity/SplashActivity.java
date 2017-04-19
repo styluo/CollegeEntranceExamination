@@ -20,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
 import edu.shu.styluo.collegeentranceexamination.utils.SpUtils;
+import edu.shu.styluo.collegeentranceexamination.utils.StatusBarLightModeUtils;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -49,6 +50,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        StatusBarLightModeUtils.setStatusBarLightMode(this);
 
         ButterKnife.bind(this);
 

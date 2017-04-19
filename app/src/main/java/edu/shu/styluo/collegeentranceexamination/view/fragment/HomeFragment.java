@@ -42,6 +42,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         return view;
     }
 
+    /**
+     * 如果每个GridViewItem都一样，则复用Activity，Bundle传参，否则直接此处判断跳转
+     * 主要的四个功能决定还是分四个模块，不复用，此处判断跳转
+     * position compare with enum variable
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Snackbar.make(view, getResources().getString(mHomeGridViewAdapter.getItem(position).getFunDesId()) + "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
