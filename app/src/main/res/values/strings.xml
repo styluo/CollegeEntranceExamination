@@ -17,8 +17,8 @@
     </string-array>
     <string name="title_main_toolbar">高考拇指帮</string>
     <string name="title_main_navi_header">用户头像</string>
-    <string name="title_main_navi_menu_first">设置（待开发）</string>
-    <string name="title_main_navi_menu_second">关于（待开发）</string>
+    <string name="title_main_navi_menu_seeting">设置（待开发）</string>
+    <string name="title_main_navi_menu_about">关于（待开发）</string>
 
     <!--FunType-->
     <string name="college_info_description">大学信息</string>

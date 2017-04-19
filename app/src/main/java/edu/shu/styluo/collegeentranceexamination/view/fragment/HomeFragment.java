@@ -44,6 +44,6 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Snackbar.make(view, "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(view, getResources().getString(mHomeGridViewAdapter.getItem(position).getFunDesId()) + "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
     }
 }

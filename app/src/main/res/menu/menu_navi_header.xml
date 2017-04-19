@@ -3,12 +3,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_item_seeting"
-            android:title="test"
+            android:title="@string/title_main_navi_menu_seeting"
             android:checked="true"
             android:icon="@mipmap/ic_menu_seeting"/>
         <item
             android:id="@+id/nav_item_about"
-            android:title="test"
+            android:title="@string/title_main_navi_menu_about"
             android:icon="@mipmap/ic_menu_about"/>
     </group>
 </menu>
