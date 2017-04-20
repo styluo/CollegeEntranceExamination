@@ -84,16 +84,13 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
     public void setImageResource(@DrawableRes int drawableResourceId) {
         mDrawable = getResources().getDrawable(drawableResourceId);
         mImageView.setImageResource(drawableResourceId);
-        /*Picasso.with(getContext())
-                .load(drawableResourceId)
-                .memoryPolicy(NO_CACHE, NO_STORE)
-                .into(mImageView);*/
 
         updateBlur();
     }
 
     /**
-     * 模糊处理 API >= 17 才能进行模糊处理, 这里可能引发OOM
+     * 模糊处理 API >= 17 才能进行模糊处理, 这里可能引发OOM,
+     * 这个算法有bug，比较懒，我只fix了竖屏的bug，横屏没测试,讲道理问题应该也不大
      * @return
      */
     @TargetApi(17)
@@ -113,14 +110,23 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
             // Get the Bitmap
             final BitmapDrawable bitmapDrawable = (BitmapDrawable) mDrawable;
             final Bitmap originalBitmap = bitmapDrawable.getBitmap();
+            //fix
+            final float ratioCorrect = (float)mImageView.getHeight() / (float) mImageView.getWidth();
 
             // Calculate the height as a ratio of the Bitmap
             int height = (int) (ratio * originalBitmap.getHeight());
 
+            //fix
+            height = (int) (height * ratioCorrect);
+
             // The y position is the number of pixels height represents from the bottom of the Bitmap
             final int y = originalBitmap.getHeight() - height;
 
-            final Bitmap portionToBlur = Bitmap.createBitmap(originalBitmap, 0, y, originalBitmap.getWidth(), height);
+            //fix
+            final int correct = (int)(originalBitmap.getHeight() * (1 - ratioCorrect)) / 2;
+
+            //fix
+            final Bitmap portionToBlur = Bitmap.createBitmap(originalBitmap, 0, y - correct, originalBitmap.getWidth(), height);
             final Bitmap blurredBitmap = portionToBlur.copy(Bitmap.Config.ARGB_8888, true);
 
             // Use RenderScript to blur the pixels
@@ -134,11 +140,12 @@ public class CaptionedSquareLayout extends FrameLayout implements View.OnLayoutC
             tmpOut.copyTo(blurredBitmap);
             new Canvas(blurredBitmap).drawColor(mScrimColor);
 
-            // Create the new bitmap using the old plus the blurred portion and display it
+            // Create the new bitmap using the old plus the blurred portion and display itwww
             final Bitmap newBitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true);
             final Canvas canvas = new Canvas(newBitmap);
-            canvas.drawBitmap(blurredBitmap, 0, y, new Paint());
 
+            //fix
+            canvas.drawBitmap(blurredBitmap, 0, y - correct, new Paint());
             mImageView.setImageBitmap(newBitmap);
         }else {
             //TODO nothing
