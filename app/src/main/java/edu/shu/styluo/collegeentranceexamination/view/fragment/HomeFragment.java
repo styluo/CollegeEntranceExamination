@@ -1,5 +1,6 @@
 package edu.shu.styluo.collegeentranceexamination.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,8 @@ import android.widget.GridView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
+import edu.shu.styluo.collegeentranceexamination.constant.FunType;
+import edu.shu.styluo.collegeentranceexamination.view.activity.CollegeDetailActivity;
 import edu.shu.styluo.collegeentranceexamination.view.adapter.HomeGridViewAdapter;
 
 /**
@@ -49,6 +52,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Snackbar.make(view, getResources().getString(mHomeGridViewAdapter.getItem(position).getFunDesId()) + "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
+        if(mHomeGridViewAdapter.getItem(position) == FunType.COLLEGES){
+            Intent intent = new Intent(getActivity(), CollegeDetailActivity.class);
+            startActivity(intent);
+        }else{
+            Snackbar.make(view, getResources().getString(mHomeGridViewAdapter.getItem(position).getFunDesId()) + "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
+        }
     }
 }

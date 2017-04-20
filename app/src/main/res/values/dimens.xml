@@ -12,6 +12,14 @@
     <dimen name="header_padding_top">24dp</dimen>
 
     <dimen name="header_img_width">64dp</dimen>
-    <dimen name="header_img_height">64dp</dimen>
+    <dimen name="header_img_height">64dp</dimen>'
+
+    <!--CollegeDetailActivity-->
+    <dimen name="college_appbar_height">256dp</dimen>
+    <dimen name="college_expanded_start_margin">48dp</dimen>
+    <dimen name="college_expanded_end_margin">64dp</dimen>
+    <dimen name="college_iv_height">256dp</dimen>
+    <dimen name="college_fab_marign">24dp</dimen>
+    <dimen name="college_cv_margin">2dp</dimen>
 
 </resources>

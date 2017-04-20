@@ -1,6 +1,6 @@
 <resources>
     <!--全局-->
-    <string name="app_name">CollegeEntranceExamination</string>
+    <string name="app_name">拇指帮</string>
 
     <!--启动页-->
     <string name="title_splash">高考拇指帮</string>
@@ -35,4 +35,15 @@
     <!--MainActivity-->
     <string name="drawer_navi_header_username">用户名(待开发)</string>
     <string name="drawer_navi_header_email">邮箱(待开发)</string>
+
+    <!--CollegeDetailActivity-->
+    <string name="tv_college_histroy">历史</string>
+    <string name="tv_college_history_detail">1922年10月，国共合作创办了上海大学，校长为于右任，教务长为瞿秋白，学校享有“武有黄埔、
+        文有上大”之盛誉。筚路蓝缕历坎坷，风雨兼程薪火传。1994年5月，上海工业大学、上海科学技术大学、原上海大学、上海科技高等专科学
+        校四校优势互补，组建为新的上海大学</string>
+    <string name="tv_college_situation">现状</string>
+    <string name="tv_college_situation_detail">上海大学在英国2015年QS亚洲大学排名中位列全亚洲第75名、中国大陆第15位（上海第4），
+        在2015年QS全球顶尖年轻高校排名中名列中国大陆第1位、世界第51-60位。学校设有宝山（校本部）、延长、嘉定三个校区，占地面积约3000亩，
+        建筑面积123万余平方米。现有研究生14310人，全日制本科生20902人，外国留学生4117人。学校的战略目标是建设成为世界一流、特色鲜明的综
+        合性研究型大学</string>
 </resources>
