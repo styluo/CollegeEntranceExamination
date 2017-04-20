@@ -22,6 +22,9 @@
         <activity android:name=".view.activity.MainActivity"/>
         <activity android:name=".view.activity.CollegeDetailActivity"
             android:parentActivityName=".view.activity.MainActivity"/>
+
+        <activity android:name=".view.activity.MajorSimulationActivity"
+            android:parentActivityName=".view.activity.MajorSimulationActivity"/>
     </application>
 
 </manifest>

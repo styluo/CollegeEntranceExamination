@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         tools:src="@mipmap/ic_launcher"
         android:scaleType="centerCrop"
-        />
+        android:transitionName="@string/iv_transition_name" />
 
     <TextView
         android:id="@+id/tv_home_item"
@@ -17,5 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:textColor="@color/white"
-        tools:text="@string/app_name"/>
+        tools:text="@string/app_name"
+        android:transitionName="@string/tv_transition_name"/>
 </merge>

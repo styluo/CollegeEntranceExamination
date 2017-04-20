@@ -46,4 +46,13 @@
         在2015年QS全球顶尖年轻高校排名中名列中国大陆第1位、世界第51-60位。学校设有宝山（校本部）、延长、嘉定三个校区，占地面积约3000亩，
         建筑面积123万余平方米。现有研究生14310人，全日制本科生20902人，外国留学生4117人。学校的战略目标是建设成为世界一流、特色鲜明的综
         合性研究型大学</string>
+
+    <!--HomeFragment-->
+    <!-- Transition Names -->
+    <string name="iv_transition_name">iv_home_transition</string>
+    <string name="tv_transition_name">tv_home_transition</string>
+
+    <!--MajorSimulationActivity-->
+    <string name="tv_simulation_question_name">问题标题（待开发）</string>
+    <string name="tv_simulation_question_detail">问题详情，举例：Android插件化和热更新您有了解吗？（待开发）</string>
 </resources>
