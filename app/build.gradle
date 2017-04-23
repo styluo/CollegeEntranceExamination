@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 
 android {
     compileSdkVersion 25
@@ -16,6 +17,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    /*针对greenDao的一些配置*/
+    greendao {
+        schemaVersion 1 //数据库版本号
+        daoPackage 'com.shu.styluo.collegeentranceexamination.greendao' //自动生成的工具类的包名
+        targetGenDir 'src/main/java' //路径
     }
 }
 
@@ -50,4 +57,7 @@ dependencies {
 
     //图片加载框架
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //引入GreenDAO
+    compile 'org.greenrobot:greendao:3.2.2' // add library
 }
