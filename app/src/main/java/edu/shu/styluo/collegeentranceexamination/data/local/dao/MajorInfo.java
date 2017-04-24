@@ -12,23 +12,23 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity(nameInDb = "MajorInfo", createInDb = false)
 public class MajorInfo {
-    private String id;
-    private String major_name;
-    private String subject_code;
-    private String degree_level;
-    private String school_system;
-    private String main_course;
-    private String major_goal;
-    private String major_require;
-    private String major_ability;
-    private String major_pratice;
-    private String major_recommend;
-    private String major_salary;
-    private String major_employ;
-    private String major_develop;
-    private String major_graduate;
-    private String major_abroad;
-    private String major_intro;
+    private String id; //专业代码
+    private String major_name; //专业名称
+    private String subject_code; //学科代码
+    private String degree_level; //学位级别
+    private String school_system; //学制
+    private String main_course; //主要课程
+    private String major_goal; //专业培养目标
+    private String major_require; //专业要求
+    private String major_ability; //专业培养能力
+    private String major_pratice; //专业实践
+    private String major_recommend; //专业推荐
+    private String major_salary; //专业平均薪水
+    private String major_employ; //就业去向
+    private String major_develop; //专业发展
+    private String major_graduate; //读研深造
+    private String major_abroad; //出国深造
+    private String major_intro; //专业介绍
 
     @Generated(hash = 714298037)
     public MajorInfo(String id, String major_name, String subject_code,

@@ -2,9 +2,10 @@ package edu.shu.styluo.collegeentranceexamination.data.local;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import org.greenrobot.greendao.async.AsyncOperation;
+import org.greenrobot.greendao.async.AsyncOperationListener;
+import org.greenrobot.greendao.async.AsyncSession;
 import org.greenrobot.greendao.query.Query;
-
-import java.util.List;
 
 import edu.shu.styluo.collegeentranceexamination.data.local.dao.MajorInfo;
 import edu.shu.styluo.collegeentranceexamination.greendao.DaoMaster;
@@ -48,14 +49,28 @@ public class OrmHelper{
 
     /**
      * 分页查询测试，测试数据库可用，也可以使用JUnit来进行测试
+     * 如果批量查询可以使用AsyncSession进行异步查询
+     * Query<MajorInfo> query = majorInfoDao.queryBuilder().orderDesc(MajorInfoDao.Properties.Id)
+     *         .offset(offset).limit(limit).build();这是同步查询方法,数据量为0-10可以考虑使用
      * @param offset
      * @param limit
      * @return
      */
-    public List<MajorInfo> queryMajorInfo(int offset, int limit){
+    public void queryMajorInfo(int offset, int limit){
         MajorInfoDao majorInfoDao = getDaoSession().getMajorInfoDao();
+
         Query<MajorInfo> query = majorInfoDao.queryBuilder().orderDesc(MajorInfoDao.Properties.Id)
                 .offset(offset).limit(limit).build();
-        return query.list();
+
+        AsyncSession asyncSession = getDaoSession().startAsyncSession();
+        asyncSession.setListenerMainThread(new AsyncOperationListener() {
+            @Override
+            public void onAsyncOperationCompleted(AsyncOperation operation) {
+                //UI操作
+                //可通过presenter传入数据，修改view的UI
+            }
+        });
+
+        asyncSession.queryList(query);
     }
 }
