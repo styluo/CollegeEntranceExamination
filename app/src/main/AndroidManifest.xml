@@ -24,7 +24,10 @@
             android:parentActivityName=".view.activity.MainActivity"/>
 
         <activity android:name=".view.activity.MajorSimulationActivity"
-            android:parentActivityName=".view.activity.MajorSimulationActivity"/>
+            android:parentActivityName=".view.activity.MainActivity"/>
+
+        <activity android:name=".view.activity.MajorListActivity"
+            android:parentActivityName=".view.activity.MainActivity"/>
     </application>
 
 </manifest>

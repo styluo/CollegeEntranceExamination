@@ -20,6 +20,7 @@ import edu.shu.styluo.collegeentranceexamination.R;
 import edu.shu.styluo.collegeentranceexamination.constant.FunType;
 import edu.shu.styluo.collegeentranceexamination.customview.CaptionedSquareLayout;
 import edu.shu.styluo.collegeentranceexamination.view.activity.CollegeDetailActivity;
+import edu.shu.styluo.collegeentranceexamination.view.activity.MajorListActivity;
 import edu.shu.styluo.collegeentranceexamination.view.activity.MajorSimulationActivity;
 import edu.shu.styluo.collegeentranceexamination.view.adapter.HomeGridViewAdapter;
 
@@ -75,8 +76,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
 
             MajorSimulationActivity.startActivity(getActivity(), mHomeGridViewAdapter.getItem(position), activityOptionsCompat.toBundle());
 
-        }else {
-            Snackbar.make(view, getResources().getString(mHomeGridViewAdapter.getItem(position).getFunDesId()) + "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
+        }else if(mHomeGridViewAdapter.getItem(position) == FunType.MAJORS) {
+            Intent intent = new Intent(getActivity(), MajorListActivity.class);
+            startActivity(intent);
+        }else{
+                Snackbar.make(view, getResources().getString(mHomeGridViewAdapter.getItem(position).getFunDesId()) + "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
         }
     }
 }
