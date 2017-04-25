@@ -7,7 +7,7 @@ import org.greenrobot.greendao.async.AsyncOperationListener;
 import org.greenrobot.greendao.async.AsyncSession;
 import org.greenrobot.greendao.query.Query;
 
-import edu.shu.styluo.collegeentranceexamination.data.local.dao.MajorInfo;
+import edu.shu.styluo.collegeentranceexamination.data.local.entity.MajorInfo;
 import edu.shu.styluo.collegeentranceexamination.greendao.DaoMaster;
 import edu.shu.styluo.collegeentranceexamination.greendao.DaoSession;
 import edu.shu.styluo.collegeentranceexamination.greendao.MajorInfoDao;

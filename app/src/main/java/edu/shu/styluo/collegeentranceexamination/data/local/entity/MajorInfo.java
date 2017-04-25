@@ -1,4 +1,4 @@
-package edu.shu.styluo.collegeentranceexamination.data.local.dao;
+package edu.shu.styluo.collegeentranceexamination.data.local.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;

@@ -8,7 +8,7 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
-import edu.shu.styluo.collegeentranceexamination.data.local.dao.MajorInfo;
+import edu.shu.styluo.collegeentranceexamination.data.local.entity.MajorInfo;
 
 import edu.shu.styluo.collegeentranceexamination.greendao.MajorInfoDao;
 
