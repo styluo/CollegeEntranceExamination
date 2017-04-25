@@ -25,4 +25,9 @@
     <!--MajorSimulationActivity-->
     <dimen name="simulation_ll_height">256dp</dimen>
 
+    <!--WorldFragment-->
+    <dimen name="world_cv_margin">2dp</dimen>
+
+    <!--NewsDeatilsActivity-->
+    <dimen name="news_cv_margin">2dp</dimen>
 </resources>

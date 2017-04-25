@@ -1,5 +1,6 @@
 package edu.shu.styluo.collegeentranceexamination.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -17,12 +18,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.HotNews;
+import edu.shu.styluo.collegeentranceexamination.listener.RecyclerViewClickListener;
 import edu.shu.styluo.collegeentranceexamination.presenter.WorldContract;
 import edu.shu.styluo.collegeentranceexamination.presenter.WorldPresenter;
+import edu.shu.styluo.collegeentranceexamination.view.activity.NewsDetailActivity;
 import edu.shu.styluo.collegeentranceexamination.view.adapter.WorldRecyclerAdapter;
 
 /**
  *圈子页的View视图
+ * RecyclerView点击事件，用Github上第三方RecyclerView可以很快实现，这里直接自己实现，
+ *addOnChildAttachStateChangeListener这种方案在这里使用可能比较麻烦所以先不用
  * @author  Created by 29043 on 2017/4/18.
  *@Time 2017.4.18
  */
@@ -73,6 +78,22 @@ public class WorldFragment extends Fragment implements WorldContract.view{
         mRecyclerView.setAdapter(mWorldRecyclerAdapter);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //点击事件加入
+        mRecyclerView.addOnItemTouchListener(new RecyclerViewClickListener(getActivity(),new RecyclerViewClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                //跳转咨询详情
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+                intent.putExtra("newsId", mHotNewsList.get(position).getNewsId());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                //TODO nothing
+            }
+        }));
     }
 
     /**
