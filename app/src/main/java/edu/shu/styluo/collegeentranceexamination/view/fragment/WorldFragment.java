@@ -28,6 +28,7 @@ import edu.shu.styluo.collegeentranceexamination.view.adapter.WorldRecyclerAdapt
  *圈子页的View视图
  * RecyclerView点击事件，用Github上第三方RecyclerView可以很快实现，这里直接自己实现，
  *addOnChildAttachStateChangeListener这种方案在这里使用可能比较麻烦所以先不用
+ * 预加载和懒加载的解决方案比较繁琐，可以优化，时间关系，我就没优化直接写了
  * @author  Created by 29043 on 2017/4/18.
  *@Time 2017.4.18
  */
@@ -40,6 +41,8 @@ public class WorldFragment extends Fragment implements WorldContract.view{
 
     private LoadingProgressDialog mLoadingProgressDialog;
     private boolean mIsLoading;
+    private boolean mIsVisible;
+    private boolean mIsCreate = false;
 
     private WorldContract.presenter mWorldPresenter;
     private WorldRecyclerAdapter mWorldRecyclerAdapter;
@@ -51,14 +54,22 @@ public class WorldFragment extends Fragment implements WorldContract.view{
         View view = inflater.inflate(R.layout.fragment_world, container, false);
         ButterKnife.bind(this, view);
 
-        mWorldPresenter = new WorldPresenter(this);
-
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 pullDownRefersh();
             }
         });
+
+        if(mLoadingProgressDialog == null){
+            mLoadingProgressDialog = new LoadingProgressDialog(getActivity());
+        }
+
+        mWorldPresenter = new WorldPresenter(this);
+        if(!mIsCreate){
+            mIsCreate = true;
+            lazyLoad();
+        }
 
         return view;
     }
@@ -76,10 +87,12 @@ public class WorldFragment extends Fragment implements WorldContract.view{
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+
         if(getUserVisibleHint()){
-            mWorldPresenter.initData();
-            mLoadingProgressDialog = new LoadingProgressDialog(getActivity());
-            mLoadingProgressDialog.show();
+            mIsVisible = true;
+            lazyLoad();
+        }else{
+            mIsVisible = false;
         }
     }
 
@@ -155,6 +168,11 @@ public class WorldFragment extends Fragment implements WorldContract.view{
         mLoadingProgressDialog.dismiss();
     }
 
+    @Override
+    public SwipeRefreshLayout getRootView(){
+        return mSwipeRefreshLayout;
+    }
+
     /**
      * 下拉刷新
      */
@@ -163,4 +181,15 @@ public class WorldFragment extends Fragment implements WorldContract.view{
         mWorldPresenter.refershData();
     }
 
+    /**
+     * 懒加载数据
+     */
+    private void lazyLoad(){
+        if(!mIsVisible || !mIsCreate){
+            return;
+        }else{
+            mLoadingProgressDialog.show();
+            mWorldPresenter.initData();
+        }
+    }
 }

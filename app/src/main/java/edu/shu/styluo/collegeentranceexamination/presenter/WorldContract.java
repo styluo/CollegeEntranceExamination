@@ -1,5 +1,7 @@
 package edu.shu.styluo.collegeentranceexamination.presenter;
 
+import android.support.v4.widget.SwipeRefreshLayout;
+
 import java.util.List;
 
 import edu.shu.styluo.collegeentranceexamination.BasePresenter;
@@ -47,6 +49,11 @@ public interface WorldContract {
          * @param isLoading
          */
         public void setIsLoading(boolean isLoading);
+
+        /**
+         * 获取根视图
+         */
+        public SwipeRefreshLayout getRootView();
     }
 
     interface presenter extends BasePresenter {

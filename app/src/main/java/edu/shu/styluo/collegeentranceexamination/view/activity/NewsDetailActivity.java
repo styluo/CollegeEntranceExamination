@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -35,6 +36,8 @@ public class NewsDetailActivity extends AppCompatActivity implements NewsDetailC
     TextView mTextViewNewsTitle;
     @BindView(R.id.tb_news_detail)
     Toolbar mToolBar;
+    @BindView(R.id.ll_news_detail)
+    LinearLayout mLinearLayout;
 
     private LoadingProgressDialog mLoadingProgressDialog;
 
@@ -76,5 +79,10 @@ public class NewsDetailActivity extends AppCompatActivity implements NewsDetailC
     @Override
     public void hideLoadingProgressDialog() {
         mLoadingProgressDialog.dismiss();
+    }
+
+    @Override
+    public LinearLayout getRootView() {
+        return mLinearLayout;
     }
 }

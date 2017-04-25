@@ -1,5 +1,7 @@
 package edu.shu.styluo.collegeentranceexamination.presenter;
 
+import android.widget.LinearLayout;
+
 import edu.shu.styluo.collegeentranceexamination.BasePresenter;
 import edu.shu.styluo.collegeentranceexamination.BaseView;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.NewsDetail;
@@ -24,6 +26,11 @@ public interface NewsDetailContract {
          * 隐藏LoadingProgressDialog
          */
         public void hideLoadingProgressDialog();
+
+        /**
+         * 获取根视图
+         */
+        public LinearLayout getRootView();
     }
 
     interface presenter extends BasePresenter {
