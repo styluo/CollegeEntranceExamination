@@ -9,6 +9,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
+import edu.shu.styluo.collegeentranceexamination.customview.LoadingProgressDialog;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.NewsDetail;
 import edu.shu.styluo.collegeentranceexamination.presenter.NewsDetailContract;
 import edu.shu.styluo.collegeentranceexamination.presenter.NewsDetailPresenter;
@@ -35,6 +36,8 @@ public class NewsDetailActivity extends AppCompatActivity implements NewsDetailC
     @BindView(R.id.tb_news_detail)
     Toolbar mToolBar;
 
+    private LoadingProgressDialog mLoadingProgressDialog;
+
     private int newsId;
     private NewsDetailContract.presenter mNewsDetailPresenter;
 
@@ -54,6 +57,9 @@ public class NewsDetailActivity extends AppCompatActivity implements NewsDetailC
         mNewsDetailPresenter = new NewsDetailPresenter(this);
 
         mNewsDetailPresenter.getData(newsId);
+
+        mLoadingProgressDialog = new LoadingProgressDialog(this);
+        mLoadingProgressDialog.show();
     }
 
     @Override
@@ -65,5 +71,10 @@ public class NewsDetailActivity extends AppCompatActivity implements NewsDetailC
     public void initView(NewsDetail.RowsBean newsDetail) {
         mTextViewNewsTitle.setText(newsDetail.getNewsTitle());
         mTextViewNewsDetail.setText(newsDetail.getNewsContent().replaceAll("　　", "\n        "));
+    }
+
+    @Override
+    public void hideLoadingProgressDialog() {
+        mLoadingProgressDialog.dismiss();
     }
 }

@@ -36,6 +36,17 @@ public interface WorldContract {
          * @param hotNewsList
          */
         public void getRefershData(List<HotNews.RowsBean> hotNewsList);
+
+        /**
+         * 隐藏LoadingProgressDialog
+         */
+        public void hideLoadingProgressDialog();
+
+        /**
+         * 是否正在加载数据
+         * @param isLoading
+         */
+        public void setIsLoading(boolean isLoading);
     }
 
     interface presenter extends BasePresenter {

@@ -2,7 +2,7 @@ package edu.shu.styluo.collegeentranceexamination.view.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * @Time 2017.4.18.
  */
 
-public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
+public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> fragments;
 
     /**

@@ -29,6 +29,7 @@ public class NewsDetailPresenter implements NewsDetailContract.presenter{
                     @Override
                     public void accept(NewsDetail newsDetail) throws Exception {
                         mNewsDetailView.initView(newsDetail.getRows().get(0));
+                        mNewsDetailView.hideLoadingProgressDialog();
                     }
                 });
     }

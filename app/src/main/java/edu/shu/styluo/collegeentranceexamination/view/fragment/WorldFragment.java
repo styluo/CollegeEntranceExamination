@@ -2,7 +2,6 @@ package edu.shu.styluo.collegeentranceexamination.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -17,6 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
+import edu.shu.styluo.collegeentranceexamination.customview.LoadingProgressDialog;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.HotNews;
 import edu.shu.styluo.collegeentranceexamination.listener.RecyclerViewClickListener;
 import edu.shu.styluo.collegeentranceexamination.presenter.WorldContract;
@@ -38,10 +38,12 @@ public class WorldFragment extends Fragment implements WorldContract.view{
     @BindView(R.id.rv_world)
     RecyclerView mRecyclerView;
 
+    private LoadingProgressDialog mLoadingProgressDialog;
+    private boolean mIsLoading;
+
     private WorldContract.presenter mWorldPresenter;
     private WorldRecyclerAdapter mWorldRecyclerAdapter;
     private List<HotNews.RowsBean> mHotNewsList;
-    private Handler handler = new Handler();
 
     @Nullable
     @Override
@@ -58,9 +60,32 @@ public class WorldFragment extends Fragment implements WorldContract.view{
             }
         });
 
-        mWorldPresenter.initData();
-
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    /**
+     * 当Fragment可见时开始加载数据，因为ViewPager+FragmentPagerAdapter的缓存策略，如果create
+     * 直接加载数据，会导致dialog在相邻Tab就开始显示并开始网路请求数据
+     * @param isVisibleToUser
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(getUserVisibleHint()){
+            mWorldPresenter.initData();
+            mLoadingProgressDialog = new LoadingProgressDialog(getActivity());
+            mLoadingProgressDialog.show();
+        }
+    }
+
+    @Override
+    public void setIsLoading(boolean isLoading) {
+        this.mIsLoading = isLoading;
     }
 
     @Override
@@ -123,6 +148,11 @@ public class WorldFragment extends Fragment implements WorldContract.view{
         }
         mWorldRecyclerAdapter.notifyDataSetChanged();
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void hideLoadingProgressDialog() {
+        mLoadingProgressDialog.dismiss();
     }
 
     /**

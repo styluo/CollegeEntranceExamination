@@ -35,13 +35,16 @@ public class WorldPresenter implements WorldContract.presenter{
      */
     @Override
     public void initData(){
+        mWorldView.setIsLoading(true);
         RetrofitFactory.getInstance().getHotNews("1")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<HotNews>() {
                     @Override
                     public void accept(HotNews hotNewses) throws Exception {
+                        mWorldView.setIsLoading(false);
                         mWorldView.initAdapter(hotNewses.getRows());
+                        mWorldView.hideLoadingProgressDialog();
                     }
                 });
     }

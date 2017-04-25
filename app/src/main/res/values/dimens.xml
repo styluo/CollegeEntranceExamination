@@ -30,4 +30,11 @@
 
     <!--NewsDeatilsActivity-->
     <dimen name="news_cv_margin">2dp</dimen>
+
+    <!--LoadingProgressDialog-->
+    <dimen name="loading_ll_lw">100dp</dimen>
+    <dimen name="loading_ll_lh">100dp</dimen>
+    <dimen name="loading_pb_lw">65dp</dimen>
+    <dimen name="loading_pb_lh">65dp</dimen>
+    <dimen name="loading_rl_margin">10dp</dimen>
 </resources>

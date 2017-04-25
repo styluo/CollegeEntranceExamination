@@ -47,4 +47,10 @@
         <item name="android:layout_marginRight">2dp</item>
         <item name="android:layout_marginTop">10dp</item>
     </style>
+
+    <!--LoadingProgressDialog-->
+    <style name="LoadingProgressDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">@color/orange</item>
+    </style>
 </resources>

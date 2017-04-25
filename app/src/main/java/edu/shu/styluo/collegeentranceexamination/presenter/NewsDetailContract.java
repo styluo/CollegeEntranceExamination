@@ -19,6 +19,11 @@ public interface NewsDetailContract {
          * @param newsDetail 咨询详情entity实体类
          */
         public void initView(NewsDetail.RowsBean newsDetail);
+
+        /**
+         * 隐藏LoadingProgressDialog
+         */
+        public void hideLoadingProgressDialog();
     }
 
     interface presenter extends BasePresenter {

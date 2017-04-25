@@ -55,4 +55,7 @@
     <!--MajorSimulationActivity-->
     <string name="tv_simulation_question_name">问题标题（待开发）</string>
     <string name="tv_simulation_question_detail">问题详情，举例：Android插件化和热更新您有了解吗？（待开发）</string>
+
+    <!--LoadingProgressDialog-->
+    <string name="loading_dialog">Loading...</string>
 </resources>
