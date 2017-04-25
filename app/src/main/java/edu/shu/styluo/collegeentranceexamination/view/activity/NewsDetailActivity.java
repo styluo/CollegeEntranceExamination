@@ -9,12 +9,10 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
-import edu.shu.styluo.collegeentranceexamination.data.remote.RetrofitFactory;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.NewsDetail;
+import edu.shu.styluo.collegeentranceexamination.presenter.NewsDetailContract;
+import edu.shu.styluo.collegeentranceexamination.presenter.NewsDetailPresenter;
 import edu.shu.styluo.collegeentranceexamination.utils.StatusBarLightModeUtils;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * ButterKnife和StatusBar的样式可以提取到BaseView时间关系，代码重构再考虑吧
@@ -29,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
  * e-mail: shu_jiahuili@foxmail.com
  */
 
-public class NewsDetailActivity extends AppCompatActivity {
+public class NewsDetailActivity extends AppCompatActivity implements NewsDetailContract.view{
     @BindView(R.id.tv_news_detail)
     TextView mTextViewNewsDetail;
     @BindView(R.id.tv_news_title)
@@ -38,6 +36,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     Toolbar mToolBar;
 
     private int newsId;
+    private NewsDetailContract.presenter mNewsDetailPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,18 +48,22 @@ public class NewsDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         StatusBarLightModeUtils.setStatusBarLightMode(this);
 
-        RetrofitFactory.getInstance().getNewsDetailById(newsId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<NewsDetail>() {
-                    @Override
-                    public void accept(NewsDetail newsDetail) throws Exception {
-                        mTextViewNewsTitle.setText(newsDetail.getRows().get(0).getNewsTitle());
-                        mTextViewNewsDetail.setText(newsDetail.getRows().get(0).getNewsContent().replaceAll("　　", "\n        "));
-                    }
-                });
-
         setSupportActionBar(mToolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mNewsDetailPresenter = new NewsDetailPresenter(this);
+
+        mNewsDetailPresenter.getData(newsId);
+    }
+
+    @Override
+    public void setPresenter(NewsDetailContract.presenter presenter) {
+        mNewsDetailPresenter = presenter;
+    }
+
+    @Override
+    public void initView(NewsDetail.RowsBean newsDetail) {
+        mTextViewNewsTitle.setText(newsDetail.getNewsTitle());
+        mTextViewNewsDetail.setText(newsDetail.getNewsContent().replaceAll("　　", "\n        "));
     }
 }
