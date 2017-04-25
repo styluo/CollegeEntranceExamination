@@ -38,6 +38,7 @@ public class WorldRecyclerAdapter extends RecyclerView.Adapter{
         HotNews.RowsBean rowsBean = (HotNews.RowsBean) mHotNewsList.get(position);
 
         worldRecyclerViewHolder.getTextViewTitle().setText(rowsBean.getNewsTitle());
+        worldRecyclerViewHolder.getTextViewTime().setText(rowsBean.getNewsDate());
     }
 
     @Override

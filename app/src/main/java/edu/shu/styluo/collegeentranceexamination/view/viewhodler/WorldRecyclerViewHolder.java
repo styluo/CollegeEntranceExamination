@@ -15,15 +15,21 @@ import edu.shu.styluo.collegeentranceexamination.R;
  */
 
 public class WorldRecyclerViewHolder extends RecyclerView.ViewHolder{
-    private TextView mTextViewTitle;
+    private TextView mTextViewTitle; //标题
+    private TextView mTextViewTime; //时间
 
     public WorldRecyclerViewHolder(View itemView){
         super(itemView);
 
         mTextViewTitle = ButterKnife.findById(itemView, R.id.tv_world_title);
+        mTextViewTime = ButterKnife.findById(itemView, R.id.tv_world_time);
     }
 
     public TextView getTextViewTitle(){
         return mTextViewTitle;
+    }
+
+    public TextView getTextViewTime(){
+        return mTextViewTime;
     }
 }
