@@ -48,6 +48,7 @@ public class OrmHelper{
     }
 
     /**
+     * 使用样例，操作可放在Presenter中
      * 分页查询测试，测试数据库可用，也可以使用JUnit来进行测试
      * 如果批量查询可以使用AsyncSession进行异步查询
      * Query<MajorInfo> query = majorInfoDao.queryBuilder().orderDesc(MajorInfoDao.Properties.Id)
@@ -68,6 +69,7 @@ public class OrmHelper{
             public void onAsyncOperationCompleted(AsyncOperation operation) {
                 //UI操作
                 //可通过presenter传入数据，修改view的UI
+                //List<MajorInfo> majorInfoList = (List<MajorInfo>) operation.getResult();
             }
         });
 

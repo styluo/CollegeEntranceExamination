@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
+import edu.shu.styluo.collegeentranceexamination.presenter.MajorListContract;
+import edu.shu.styluo.collegeentranceexamination.presenter.MajorListPresenter;
 import edu.shu.styluo.collegeentranceexamination.utils.StatusBarLightModeUtils;
 
 /**
@@ -16,7 +18,8 @@ import edu.shu.styluo.collegeentranceexamination.utils.StatusBarLightModeUtils;
  * e-mail: shu_jiahuili@foxmail.com
  */
 
-public class MajorListActivity extends AppCompatActivity {
+public class MajorListActivity extends AppCompatActivity implements MajorListContract.view{
+    private MajorListContract.presenter mMajorListPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,5 +28,12 @@ public class MajorListActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         StatusBarLightModeUtils.setStatusBarLightMode(this);
+
+        mMajorListPresenter = new MajorListPresenter(this);
+    }
+
+    @Override
+    public void setPresenter(MajorListContract.presenter presenter) {
+        this.mMajorListPresenter = presenter;
     }
 }
