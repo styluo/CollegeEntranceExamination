@@ -94,7 +94,7 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
             public void onItemClick(View view, int position) {
                 //TODO goto DetailActivity
                 //获取学科代码，需要特殊处理，数据库学科代码部分缺0
-                String majorId = correctMajorId(mMajorInfoList.get(position).getId());
+                String majorId = mMajorInfoList.get(position).getId();
                 Intent intent = new Intent(MajorListActivity.this, MajorInfoDetailActivity.class);
                 intent.putExtra("majorId", majorId);
                 startActivity(intent);

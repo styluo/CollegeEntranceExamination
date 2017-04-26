@@ -47,5 +47,6 @@ public class MajorInfoDetailPresenter implements MajorInfoDetailContract.present
         asyncSession.queryList(query);
 
         //加载远程数据（开设高校）,无单独返回相关开设高校接口，如果需求可用现有接口并本地处理数据
+        //使用前需要使用工具类处理一下本地Id CorrectLocalDataUtils.correctMajorId(majorId)
     }
 }
