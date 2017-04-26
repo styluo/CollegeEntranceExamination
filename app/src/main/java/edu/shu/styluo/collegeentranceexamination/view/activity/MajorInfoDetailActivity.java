@@ -3,6 +3,8 @@ package edu.shu.styluo.collegeentranceexamination.view.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,6 +35,8 @@ public class MajorInfoDetailActivity extends AppCompatActivity implements MajorI
     TextView mTextViewMainGoal; //专业培养目标
     @BindView(R.id.tv_majordetail_mainability)
     TextView mTextViewMainAbility; //专业培养能力
+    @BindView(R.id.btn_majordetail)
+    Button mButton;
 
     //数据是否已经获取完成
     private boolean isLocal = false;
@@ -51,6 +55,14 @@ public class MajorInfoDetailActivity extends AppCompatActivity implements MajorI
         mMajorInfoDetailPresenter = new MajorInfoDetailPresenter(this);
 
         mMajorInfoDetailPresenter.initData(majorId);
+
+        //弹出显示开设大学信息
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
