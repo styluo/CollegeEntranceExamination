@@ -37,4 +37,7 @@
     <dimen name="loading_pb_lw">65dp</dimen>
     <dimen name="loading_pb_lh">65dp</dimen>
     <dimen name="loading_rl_margin">10dp</dimen>
+
+    <!--MajorInfoActivity-->
+    <dimen name="major_info_cv_margin">2dp</dimen>
 </resources>
