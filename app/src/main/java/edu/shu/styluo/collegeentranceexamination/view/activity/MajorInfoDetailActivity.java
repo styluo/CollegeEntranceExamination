@@ -84,6 +84,10 @@ public class MajorInfoDetailActivity extends AppCompatActivity implements MajorI
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //初始化加载变量
+                mIsLoading = false;
+                mIsLoadMore = true;
+
                 mPopupWindow = new BasePopupWindow(MajorInfoDetailActivity.this);
                 View view = LayoutInflater.from(MajorInfoDetailActivity.this).inflate(R.layout.popupwindow_majorinfo_college, null);
                 mPopupWindow.setContentView(view);
@@ -135,12 +139,12 @@ public class MajorInfoDetailActivity extends AppCompatActivity implements MajorI
     }
 
     /**
-     * 当获取的数据小于1页数据，就说明已经加载完成了
+     * 当获取的数据小于1页数据，就说明已经加载完成了,Ps:小于ITEM_PAGE的数据页要放入List中
      * @param collegeList
      */
     @Override
     public void getLoadMore(List<CollegeByMajor.RowsBean> collegeList) {
-        if(collegeList.size() < PAGE_ITEM){
+        if(collegeList.size() == 0){
             Snackbar.make(mScrollView, PROMOT_INFO, Snackbar.LENGTH_SHORT).show();
             mIsLoadMore = false;
             return;
@@ -150,6 +154,12 @@ public class MajorInfoDetailActivity extends AppCompatActivity implements MajorI
             mCollegeList.add(rowsBean);
         }
         mMajorDetailPopupRecyclerAdapter.notifyDataSetChanged();
+
+        if(collegeList.size() < PAGE_ITEM){
+            Snackbar.make(mScrollView, PROMOT_INFO, Snackbar.LENGTH_SHORT).show();
+            mIsLoadMore = false;
+            return;
+        }
     }
 
     @Override
