@@ -122,6 +122,11 @@ public class MajorInfoDetailActivity extends AppCompatActivity implements MajorI
                 //lastVisibleItem >= totalItemCount - 2 表示剩下2个item自动加载
                 if (lastVisibleItem >= totalItemCount - 2 && dy >= 0) {
                     if(mIsLoadMore && !mIsLoading){
+                        //第一页就已经加载完全了，则直接set loadMore为false
+                        if(totalItemCount < PAGE_ITEM){
+                            mIsLoadMore = false;
+                            return;
+                        }
                         mIsLoading = true;
                         mMajorInfoDetailPresenter.loadMore(majorId, (totalItemCount / PAGE_ITEM) + 1);
                     }
