@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -72,6 +73,9 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
         mRecyclerView.setAdapter(mMajorInfoRecyclerAdapter);
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+        //默认动画，可继承自定义动画
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //下拉刷新
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
