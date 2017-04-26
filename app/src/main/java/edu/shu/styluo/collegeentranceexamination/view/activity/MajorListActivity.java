@@ -13,6 +13,8 @@ import edu.shu.styluo.collegeentranceexamination.utils.StatusBarLightModeUtils;
 /**
  * 专业信息列表的activity,ButterKnife绑定和设置statusbar的样式可以提取到BaseActivity中
  * 时间关系先不做提取，等到功能实现后做代码重构
+ * 给一个Excel要自己导入sqlite，然后如果做二级联动
+ * 这个数据库也不是树形数据库，还是简单点来吧O(∩_∩)O
  * author: styluo
  * date: 2017/4/24 14:25
  * e-mail: shu_jiahuili@foxmail.com

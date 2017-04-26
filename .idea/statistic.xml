@@ -3,7 +3,7 @@
   <component name="Statistic">
     <option name="excludedDirectories">
       <list>
-        <option value="$PROJECT_DIR$/app/src" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/shu/styluo/collegeentranceexamination" />
       </list>
     </option>
   </component>
