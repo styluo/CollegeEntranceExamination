@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
@@ -54,8 +53,8 @@ public class BasePopupWindow extends PopupWindow {
      * */
     private void initBasePopupWindow() {
         setAnimationStyle(android.R.style.Animation_Dialog);
-        setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-        setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+       // setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+       // setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         setOutsideTouchable(true);
         setFocusable(true);
     }

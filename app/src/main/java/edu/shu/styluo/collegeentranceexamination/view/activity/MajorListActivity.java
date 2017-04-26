@@ -47,7 +47,8 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
     private MajorInfoRecyclerAdapter mMajorInfoRecyclerAdapter;
     private LinearLayoutManager mLinearLayoutManager;
 
-    private boolean isLoadMore = true;
+    private boolean mIsLoadMore = true;
+    private boolean mIsLoading = false;
 
     private final String PROMOT_INFO = "没有更多数据";
 
@@ -115,12 +116,18 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
                 int totalItemCount = mLinearLayoutManager.getItemCount();
                 //lastVisibleItem >= totalItemCount - 4 表示剩下4个item自动加载
                 if (lastVisibleItem >= totalItemCount - 4 && dy > 0) {
-                    if(isLoadMore){
+                    if(mIsLoadMore && !mIsLoading){
+                        mIsLoading = true;
                         mMajorListPresenter.loadMore(totalItemCount);
                     }
                 }
             }
         });
+    }
+
+    @Override
+    public void setLoadingState(boolean isLoading) {
+        mIsLoading = isLoading;
     }
 
     /**
@@ -144,7 +151,7 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
     public void getMoreData(List<MajorInfo> majorInfoList) {
         if(majorInfoList.size() == 0){
             Snackbar.make(mSwipeRefreshLayout, PROMOT_INFO, Snackbar.LENGTH_SHORT).show();
-            isLoadMore = false;
+            mIsLoadMore = false;
             return;
         }
 

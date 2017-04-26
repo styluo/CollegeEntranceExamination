@@ -98,6 +98,7 @@ public class MajorListPresenter implements MajorListContract.presenter{
             public void onAsyncOperationCompleted(AsyncOperation operation) {
                 List<MajorInfo> majorInfoList = (List<MajorInfo>) operation.getResult();
                 mMajorListView.getMoreData(majorInfoList);
+                mMajorListView.setLoadingState(false);
             }
         });
 

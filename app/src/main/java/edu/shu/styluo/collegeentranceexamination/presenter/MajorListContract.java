@@ -32,6 +32,12 @@ public interface MajorListContract {
          * @param majorInfoList
          */
         public void getMoreData(List<MajorInfo> majorInfoList);
+
+        /**
+         * 设置加载状态
+         * @param isLoading
+         */
+        public void setLoadingState(boolean isLoading);
     }
 
     interface presenter extends BasePresenter{

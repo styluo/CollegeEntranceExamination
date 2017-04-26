@@ -18,7 +18,7 @@ public class CorrectLocalDataUtils {
         if(isContainsStr(majorId)){
             return majorId; //含有字母的majorId未出错
         }
-        StringBuffer result = new StringBuffer(0);
+        StringBuffer result = new StringBuffer("0");
         //如果只有5位，则说明缺了前导0
         if(majorId.length() == 5){
             return result.append(majorId).toString();

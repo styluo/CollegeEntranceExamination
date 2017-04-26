@@ -43,4 +43,9 @@
 
     <!--MajorInfoDetailActivity-->
     <dimen name="major_detail_cv_margin">2dp</dimen>
+
+    <!--MajorInfoDetail下的PopupWindow-->
+    <dimen name="pw_major_detail_lw">320dp</dimen>
+    <dimen name="pw_major_detail_lh">480dp</dimen>
+    <dimen name="pw_cv_margin">2dp</dimen>
 </resources>
