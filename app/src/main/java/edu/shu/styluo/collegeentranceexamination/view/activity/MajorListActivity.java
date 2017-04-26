@@ -1,5 +1,6 @@
 package edu.shu.styluo.collegeentranceexamination.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,6 +93,11 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
             @Override
             public void onItemClick(View view, int position) {
                 //TODO goto DetailActivity
+                //获取学科代码，需要特殊处理，数据库学科代码部分缺0
+                String majorId = correctMajorId(mMajorInfoList.get(position).getId());
+                Intent intent = new Intent(MajorListActivity.this, MajorInfoDetailActivity.class);
+                intent.putExtra("majorId", majorId);
+                startActivity(intent);
             }
 
             @Override
@@ -152,5 +160,32 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
     private void pullDownRefersh(){
         mMajorInfoList.clear();
         mMajorListPresenter.refreshData();
+    }
+
+    /**
+     * 处理学科代码数据库数据异常，部分数据缺0
+     */
+    private String correctMajorId(String majorId){
+        if(isContainsStr(majorId)){
+            return majorId; //含有字母的majorId未出错
+        }
+        StringBuffer result = new StringBuffer(0);
+        //如果只有5位，则说明缺了前导0
+        if(majorId.length() == 5){
+            return result.append(majorId).toString();
+        }else{
+            return majorId;
+        }
+    }
+
+    /**
+     * 正则判断是否存在字母
+     * @param majorId
+     * @return
+     */
+    private boolean isContainsStr(String majorId) {
+        String regex=".*[a-zA-Z]+.*";
+        Matcher m= Pattern.compile(regex).matcher(majorId);
+        return m.matches();
     }
 }

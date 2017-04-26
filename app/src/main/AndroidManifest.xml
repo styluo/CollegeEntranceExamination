@@ -32,6 +32,9 @@
 
         <activity android:name=".view.activity.NewsDetailActivity"
             android:parentActivityName=".view.activity.MainActivity"/>
+
+        <activity android:name=".view.activity.MajorInfoDetailActivity"
+            android:parentActivityName=".view.activity.MajorListActivity"/>
     </application>
 
 </manifest>

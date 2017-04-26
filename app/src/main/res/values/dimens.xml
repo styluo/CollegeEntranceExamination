@@ -38,6 +38,9 @@
     <dimen name="loading_pb_lh">65dp</dimen>
     <dimen name="loading_rl_margin">10dp</dimen>
 
-    <!--MajorInfoActivity-->
+    <!--MajorListActivity-->
     <dimen name="major_info_cv_margin">2dp</dimen>
+
+    <!--MajorInfoDetailActivity-->
+    <dimen name="major_detail_cv_margin">2dp</dimen>
 </resources>

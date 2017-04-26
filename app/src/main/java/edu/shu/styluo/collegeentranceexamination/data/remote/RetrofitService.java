@@ -1,5 +1,6 @@
 package edu.shu.styluo.collegeentranceexamination.data.remote;
 
+import edu.shu.styluo.collegeentranceexamination.data.remote.entity.CollegeByMajor;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.HotNews;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.NewsDetail;
 import io.reactivex.Observable;
@@ -24,4 +25,7 @@ public interface RetrofitService {
     @GET("/pro/news_queryNewsByHotAndDate")
     Observable<HotNews> getHotNews(@Query("hot") String hot);
 
+    //根据专业代码查询开设高校
+    @GET("/pro/major_queryAllUnivByMajor")
+    Observable<CollegeByMajor> getCollegeByMajor(@Query("major.majorCode") String majorId, @Query("page") int page);
 }
