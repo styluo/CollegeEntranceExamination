@@ -58,4 +58,8 @@
 
     <!--LoadingProgressDialog-->
     <string name="loading_dialog">Loading...</string>
+
+    <!--MajorInfoListActivity-->
+    <string name="tv_average_salary">平均薪水:</string>
+    <string name="tv_school_system">学制:</string>
 </resources>

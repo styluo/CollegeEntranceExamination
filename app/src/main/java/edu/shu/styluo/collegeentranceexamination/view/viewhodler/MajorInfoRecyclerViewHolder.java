@@ -18,12 +18,14 @@ public class MajorInfoRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     private TextView mTextViewMajorName; //专业
     private TextView mTextViewSalary; //薪水
+    private TextView mTextViewSystem; //学制
 
     public MajorInfoRecyclerViewHolder(View itemView){
         super(itemView);
 
         mTextViewMajorName = ButterKnife.findById(itemView, R.id.tv_major_name);
         mTextViewSalary = ButterKnife.findById(itemView, R.id.tv_major_salary);
+        mTextViewSystem = ButterKnife.findById(itemView, R.id.tv_major_system);
     }
 
     public TextView getTextViewMajorName(){
@@ -32,5 +34,9 @@ public class MajorInfoRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public TextView getTextViewSalary(){
         return mTextViewSalary;
+    }
+
+    public TextView getTextViewSystem(){
+        return mTextViewSystem;
     }
 }

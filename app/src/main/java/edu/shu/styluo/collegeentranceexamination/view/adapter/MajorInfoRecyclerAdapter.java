@@ -40,6 +40,7 @@ public class MajorInfoRecyclerAdapter extends RecyclerView.Adapter {
 
         majorInfoRecyclerViewHolder.getTextViewMajorName().setText(majorInfo.getMajor_name());
         majorInfoRecyclerViewHolder.getTextViewSalary().setText(majorInfo.getMajor_salary());
+        majorInfoRecyclerViewHolder.getTextViewSystem().setText(majorInfo.getSchool_system());
     }
 
     @Override

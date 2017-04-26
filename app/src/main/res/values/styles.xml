@@ -38,6 +38,15 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <!--MajorInfoList-->
+    <style name="MajoInfo.Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
     <!--MajorSimulationActivity-->
     <style name="SimulationCardView" parent="CardView">
         <item name="cardElevation">2dp</item>
