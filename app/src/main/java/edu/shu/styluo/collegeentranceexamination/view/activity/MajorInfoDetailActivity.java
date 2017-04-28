@@ -42,7 +42,7 @@ public class MajorInfoDetailActivity extends AppCompatActivity implements MajorI
     private RecyclerView mPopupRecyclerView;
     private MajorDetailPopupRecyclerAdapter mMajorDetailPopupRecyclerAdapter;
     private LinearLayoutManager mLinearLayoutManager;
-    private List<CollegeByMajor.RowsBean> mCollegeList;
+    private List<CollegeByMajor.RowsBean> mCollegeList; //不再使用list直接操作数据
     private boolean mIsLoadMore = true;
     private boolean mIsLoading = false;
     private final int PAGE_ITEM = 5;
@@ -155,9 +155,8 @@ public class MajorInfoDetailActivity extends AppCompatActivity implements MajorI
             return;
         }
 
-        for (CollegeByMajor.RowsBean rowsBean : collegeList) {
-            mCollegeList.add(rowsBean);
-        }
+        mMajorDetailPopupRecyclerAdapter.add(collegeList);
+
         mMajorDetailPopupRecyclerAdapter.notifyDataSetChanged();
 
         if(collegeList.size() < PAGE_ITEM){

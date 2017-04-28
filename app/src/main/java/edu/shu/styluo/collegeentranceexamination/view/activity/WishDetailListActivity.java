@@ -12,6 +12,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
+import edu.shu.styluo.collegeentranceexamination.customview.LoadingProgressDialog;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.WishRankCollege;
 import edu.shu.styluo.collegeentranceexamination.presenter.WishDetailListContract;
 import edu.shu.styluo.collegeentranceexamination.presenter.WishDetailListPresenter;
@@ -19,7 +20,9 @@ import edu.shu.styluo.collegeentranceexamination.utils.StatusBarLightModeUtils;
 import edu.shu.styluo.collegeentranceexamination.view.adapter.WishDetailRecyclerAdapter;
 
 /**
- * 排名信息列表查看
+ * 排名信息列表查看，接口格式并不统一，但是因为本处仅使用大学名称，所以并没有将四个排名分开，而是直接复用
+ * 四个排名接口返回的Json对象中字段并不统一，讲道理本来应该统一的，不讲道理我也没办法，因为只使用大学名称所以
+ * 我就直接复用了同一个Entity实体，如果需要返回字段中的某些特殊信息需要拆分并创建不同Entity
  * author: styluo
  * date: 2017/4/28 9:23
  * e-mail: shu_jiahuili@foxmail.com
@@ -35,8 +38,10 @@ public class WishDetailListActivity extends AppCompatActivity implements WishDet
 
     private WishDetailListContract.presenter mPresenter;
     private WishDetailRecyclerAdapter mRecyclerAdapter;
-    private List<WishRankCollege.RowsBean> mWishCollegeList;
+    private List<WishRankCollege.RowsBean> mWishCollegeList; //不通过这个list来修改，直接使用adapter
     private LinearLayoutManager mLinearLayoutManager;
+
+    private LoadingProgressDialog mLoadingProgressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +51,12 @@ public class WishDetailListActivity extends AppCompatActivity implements WishDet
         ButterKnife.bind(this);
         StatusBarLightModeUtils.setStatusBarLightMode(this);
         info = getIntent().getStringExtra("info");
+
+        if(mLoadingProgressDialog == null){
+            mLoadingProgressDialog = new LoadingProgressDialog(this);
+        }
+
+        mLoadingProgressDialog.show();
 
         mPresenter = new WishDetailListPresenter(this);
         mPresenter.initData(info);
@@ -68,10 +79,10 @@ public class WishDetailListActivity extends AppCompatActivity implements WishDet
     @Override
     public void initAdapter(List<WishRankCollege.RowsBean> wishRankCollegeList) {
         mWishCollegeList = wishRankCollegeList;
-        mLinearLayoutManager = new LinearLayoutManager(this);
+        mLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerAdapter = new WishDetailRecyclerAdapter(mWishCollegeList);
         mRecyclerView.setAdapter(mRecyclerAdapter);
-        mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
         //设置下拉刷新
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -89,18 +100,22 @@ public class WishDetailListActivity extends AppCompatActivity implements WishDet
 
     @Override
     public void getRefershData(List<WishRankCollege.RowsBean> wishRankCollegeList) {
-        for (WishRankCollege.RowsBean college : wishRankCollegeList) {
-            mWishCollegeList.add(college);
-        }
+        mRecyclerAdapter.add(wishRankCollegeList);
+
         mRecyclerAdapter.notifyDataSetChanged();
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void hideLoadingProgressDialog() {
+        mLoadingProgressDialog.dismiss();
     }
 
     /**
      * 下拉刷新
      */
     private void pullDownRefersh(){
-        mWishCollegeList.clear();
+        mRecyclerAdapter.removeAll();
         mPresenter.refershData(info);
     }
 }

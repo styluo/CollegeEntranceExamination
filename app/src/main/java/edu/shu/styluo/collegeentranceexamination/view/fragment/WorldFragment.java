@@ -46,7 +46,7 @@ public class WorldFragment extends Fragment implements WorldContract.view{
 
     private WorldContract.presenter mWorldPresenter;
     private WorldRecyclerAdapter mWorldRecyclerAdapter;
-    private List<HotNews.RowsBean> mHotNewsList;
+    private List<HotNews.RowsBean> mHotNewsList; //不在通过List对recycler进行操作
 
     @Nullable
     @Override
@@ -123,7 +123,7 @@ public class WorldFragment extends Fragment implements WorldContract.view{
             public void onItemClick(View view, int position) {
                 //跳转咨询详情
                 Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
-                intent.putExtra("newsId", mHotNewsList.get(position).getNewsId());
+                intent.putExtra("newsId", mWorldRecyclerAdapter.getPositionItem(position).getNewsId());
                 startActivity(intent);
             }
 
@@ -156,9 +156,8 @@ public class WorldFragment extends Fragment implements WorldContract.view{
      */
     @Override
     public void getRefershData(List<HotNews.RowsBean> hotNewsList){
-        for (HotNews.RowsBean hotNew : hotNewsList) {
-            mHotNewsList.add(hotNew);
-        }
+        mWorldRecyclerAdapter.add(hotNewsList);
+
         mWorldRecyclerAdapter.notifyDataSetChanged();
         mSwipeRefreshLayout.setRefreshing(false);
     }
@@ -177,7 +176,8 @@ public class WorldFragment extends Fragment implements WorldContract.view{
      * 下拉刷新
      */
     private void pullDownRefersh(){
-        mHotNewsList.clear();
+        mWorldRecyclerAdapter.removeAll();
+
         mWorldPresenter.refershData();
     }
 

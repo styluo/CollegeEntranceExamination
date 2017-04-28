@@ -36,6 +36,11 @@ public interface WishDetailListContract {
          * @param wishRankCollegeList
          */
         public void getRefershData(List<WishRankCollege.RowsBean> wishRankCollegeList);
+
+        /**
+         * 隐藏LoadingProgressDialog
+         */
+        public void hideLoadingProgressDialog();
     }
 
     interface presenter extends BasePresenter{

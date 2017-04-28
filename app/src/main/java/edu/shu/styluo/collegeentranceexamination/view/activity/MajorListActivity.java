@@ -43,7 +43,7 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
 
     private MajorListContract.presenter mMajorListPresenter;
 
-    private List<MajorInfo> mMajorInfoList;
+    private List<MajorInfo> mMajorInfoList;  //不再使用list直接操作数据
     private MajorInfoRecyclerAdapter mMajorInfoRecyclerAdapter;
     private LinearLayoutManager mLinearLayoutManager;
 
@@ -95,7 +95,7 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
             public void onItemClick(View view, int position) {
                 //TODO goto DetailActivity
                 //获取学科代码，需要特殊处理，数据库学科代码部分缺0
-                String majorId = mMajorInfoList.get(position).getId();
+                String majorId = mMajorInfoRecyclerAdapter.getPositionItem(position).getId();
                 Intent intent = new Intent(MajorListActivity.this, MajorInfoDetailActivity.class);
                 intent.putExtra("majorId", majorId);
                 startActivity(intent);
@@ -136,9 +136,8 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
      */
     @Override
     public void getRefershData(List<MajorInfo> majorInfoList) {
-        for (MajorInfo majorInfo : majorInfoList) {
-            mMajorInfoList.add(majorInfo);
-        }
+        mMajorInfoRecyclerAdapter.add(majorInfoList);
+
         mMajorInfoRecyclerAdapter.notifyDataSetChanged();
         mSwipeRefreshLayout.setRefreshing(false);
     }
@@ -155,9 +154,8 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
             return;
         }
 
-        for (MajorInfo majorInfo : majorInfoList) {
-            mMajorInfoList.add(majorInfo);
-        }
+        mMajorInfoRecyclerAdapter.add(majorInfoList);
+
         mMajorInfoRecyclerAdapter.notifyDataSetChanged();
     }
 
@@ -165,7 +163,8 @@ public class MajorListActivity extends AppCompatActivity implements MajorListCon
      *  下拉刷新
      */
     private void pullDownRefersh(){
-        mMajorInfoList.clear();
+        mMajorInfoRecyclerAdapter.removeAll();
+
         mMajorListPresenter.refreshData();
     }
 

@@ -20,6 +20,8 @@ public class WishDetailListPresenter implements WishDetailListContract.presenter
 
     private final String XIAO_YOU_HUI = "xyh";
     private final String WU_SHU_LIAN = "wsl";
+    private final String JIAO_DA = "jd";
+    private final String QS = "qs";
 
     private final String NETWORK_ERROR = "NetWorkError, Please check the network environment";
 
@@ -33,7 +35,7 @@ public class WishDetailListPresenter implements WishDetailListContract.presenter
 
     @Override
     public void initData(String info) {
-        if(info.equals(XIAO_YOU_HUI)){
+        if(info.equals(XIAO_YOU_HUI)){  //校友会查询
             RetrofitFactory.getInstance().getWishRankCollegeXyh()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -41,22 +43,73 @@ public class WishDetailListPresenter implements WishDetailListContract.presenter
                         @Override
                         public void accept(WishRankCollege wishRankCollege) throws Exception {
                             mView.initAdapter(wishRankCollege.getRows());
+                            mView.hideLoadingProgressDialog();
                         }
                     }, new Consumer<Throwable>() {
                         @Override
                         public void accept(Throwable throwable) throws Exception {
                             Snackbar.make(mView.getRootView(), NETWORK_ERROR, Snackbar.LENGTH_SHORT).show();
+                            mView.hideLoadingProgressDialog();
                         }
                     });
 
-        } else if(info.equals(WU_SHU_LIAN)){
-
+        } else if(info.equals(WU_SHU_LIAN)){  //武书连查询
+            RetrofitFactory.getInstance().getWishRankCollegeWsl()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<WishRankCollege>() {
+                        @Override
+                        public void accept(WishRankCollege wishRankCollege) throws Exception {
+                            mView.initAdapter(wishRankCollege.getRows());
+                            mView.hideLoadingProgressDialog();
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Snackbar.make(mView.getRootView(), NETWORK_ERROR, Snackbar.LENGTH_SHORT).show();
+                            mView.hideLoadingProgressDialog();
+                        }
+                    });
+        } else if(info.equals(JIAO_DA)){  //交大查询
+            RetrofitFactory.getInstance().getWishRankCollegeJd()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<WishRankCollege>() {
+                        @Override
+                        public void accept(WishRankCollege wishRankCollege) throws Exception {
+                            mView.initAdapter(wishRankCollege.getRows());
+                            mView.hideLoadingProgressDialog();
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Snackbar.make(mView.getRootView(), NETWORK_ERROR, Snackbar.LENGTH_SHORT).show();
+                            mView.hideLoadingProgressDialog();
+                        }
+                    });
+        } else if(info.equals(QS)){ //QS查询
+            RetrofitFactory.getInstance().getWishRankCollegeQs()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<WishRankCollege>() {
+                        @Override
+                        public void accept(WishRankCollege wishRankCollege) throws Exception {
+                            mView.initAdapter(wishRankCollege.getRows());
+                            mView.hideLoadingProgressDialog();
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Snackbar.make(mView.getRootView(), NETWORK_ERROR, Snackbar.LENGTH_SHORT).show();
+                            mView.hideLoadingProgressDialog();
+                        }
+                    });
         }
     }
 
     @Override
     public void refershData(String info) {
-        if(info.equals(XIAO_YOU_HUI)){
+        if(info.equals(XIAO_YOU_HUI)){ //校友会查询
             RetrofitFactory.getInstance().getWishRankCollegeXyh()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -64,16 +117,67 @@ public class WishDetailListPresenter implements WishDetailListContract.presenter
                         @Override
                         public void accept(WishRankCollege wishRankCollege) throws Exception {
                             mView.getRefershData(wishRankCollege.getRows());
+                            mView.hideLoadingProgressDialog();
                         }
                     }, new Consumer<Throwable>() {
                         @Override
                         public void accept(Throwable throwable) throws Exception {
                             Snackbar.make(mView.getRootView(), NETWORK_ERROR, Snackbar.LENGTH_SHORT).show();
+                            mView.hideLoadingProgressDialog();
                         }
                     });
 
-        } else if(info.equals(WU_SHU_LIAN)){
-
+        } else if(info.equals(WU_SHU_LIAN)){ //武书连查询
+            RetrofitFactory.getInstance().getWishRankCollegeWsl()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<WishRankCollege>() {
+                        @Override
+                        public void accept(WishRankCollege wishRankCollege) throws Exception {
+                            mView.getRefershData(wishRankCollege.getRows());
+                            mView.hideLoadingProgressDialog();
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Snackbar.make(mView.getRootView(), NETWORK_ERROR, Snackbar.LENGTH_SHORT).show();
+                            mView.hideLoadingProgressDialog();
+                        }
+                    });
+        } else if(info.equals(JIAO_DA)) {  //交大查询
+            RetrofitFactory.getInstance().getWishRankCollegeJd()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<WishRankCollege>() {
+                        @Override
+                        public void accept(WishRankCollege wishRankCollege) throws Exception {
+                            mView.getRefershData(wishRankCollege.getRows());
+                            mView.hideLoadingProgressDialog();
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Snackbar.make(mView.getRootView(), NETWORK_ERROR, Snackbar.LENGTH_SHORT).show();
+                            mView.hideLoadingProgressDialog();
+                        }
+                    });
+        } else if(info.equals(QS)){ //QS查询
+            RetrofitFactory.getInstance().getWishRankCollegeQs()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<WishRankCollege>() {
+                        @Override
+                        public void accept(WishRankCollege wishRankCollege) throws Exception {
+                            mView.getRefershData(wishRankCollege.getRows());
+                            mView.hideLoadingProgressDialog();
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Snackbar.make(mView.getRootView(), NETWORK_ERROR, Snackbar.LENGTH_SHORT).show();
+                            mView.hideLoadingProgressDialog();
+                        }
+                    });
         }
     }
 }

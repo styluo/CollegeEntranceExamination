@@ -12,6 +12,7 @@ import edu.shu.styluo.collegeentranceexamination.data.remote.entity.HotNews;
 import edu.shu.styluo.collegeentranceexamination.view.viewhodler.WorldRecyclerViewHolder;
 
 /**
+ * RecyclerView的Adapter可以抽象一个BaseAdapter用来继承，add和remove方法都是公共的，通过Entity来代替可能出现的实体类型
  * 圈子列表的Adapter实现
  * author: styluo
  * date: 2017/4/25 13:09
@@ -44,5 +45,41 @@ public class WorldRecyclerAdapter extends RecyclerView.Adapter{
     @Override
     public int getItemCount() {
         return mHotNewsList.size();
+    }
+
+    public void remove(int position) {
+        if (position > 0 && position < mHotNewsList.size()) {
+            mHotNewsList.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
+    public void removeAll() {
+        int oldSize = mHotNewsList.size();
+        mHotNewsList.clear();
+        notifyItemRangeRemoved(0, oldSize);
+    }
+
+    public void add(List<HotNews.RowsBean> newList) {
+        if (newList != null && !newList.isEmpty()) {
+            int oldSize = mHotNewsList.size();
+            mHotNewsList.addAll(newList);
+            notifyItemRangeChanged(oldSize - 1, newList.size());
+        }
+    }
+
+    public void add(HotNews.RowsBean entity, int position) {
+        if (position > 0 && position <= mHotNewsList.size()) {
+            mHotNewsList.add(entity);
+            notifyItemInserted(position);
+        }
+    }
+
+    public HotNews.RowsBean getPositionItem(int position){
+        return mHotNewsList.get(position);
+    }
+
+    public void notifyItemRangeChanged() {
+        notifyItemRangeChanged(0, mHotNewsList.size());
     }
 }

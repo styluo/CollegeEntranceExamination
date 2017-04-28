@@ -33,4 +33,17 @@ public interface RetrofitService {
     //获取校友会排名前20
     @GET("/pro/rank_queryXYHRank")
     Observable<WishRankCollege> getWishRankCollegeXyh();
+
+    //获取武书连排名前20
+    @GET("/pro/rank_queryWSLRank")
+    Observable<WishRankCollege> getWishRankCollegeWsl();
+
+    //获取交大排名前20
+    @GET("/pro/rank_queryJDRank")
+    Observable<WishRankCollege> getWishRankCollegeJd();
+
+    //获取QS排名前20
+    @GET("/pro/rank_queryQSRank")
+    Observable<WishRankCollege> getWishRankCollegeQs();
+
 }
