@@ -35,6 +35,9 @@
 
         <activity android:name=".view.activity.MajorInfoDetailActivity"
             android:parentActivityName=".view.activity.MajorListActivity"/>
+
+        <activity android:name=".view.activity.WishDetailListActivity"
+            android:parentActivityName=".view.activity.MainActivity"/>
     </application>
 
 </manifest>

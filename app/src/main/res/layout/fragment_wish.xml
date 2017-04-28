@@ -7,29 +7,36 @@
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btn_wish_xyh"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/wish_btn_margin"
             android:background="@drawable/btn_wish_selector"
             tools:text="查询校友会排名前20"
-            android:text="@string/btn_wish_xyh"
-            android:clickable="true"/>
+            android:text="@string/btn_wish_xyh"/>
 
-        <Button android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btn_wish_wsl"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/wish_btn_margin"
             android:background="@drawable/btn_wish_selector"
             tools:text="查询武书连排名前20"
             android:text="@string/btn_wish_wsl"/>
 
-        <Button android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btn_wish_jd"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/wish_btn_margin"
             android:background="@drawable/btn_wish_selector"
             tools:text="查询交大排名前20"
             android:text="@string/btn_wish_jd"/>
 
-        <Button android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btn_wish_qs"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/wish_btn_margin"
             android:background="@drawable/btn_wish_selector"
