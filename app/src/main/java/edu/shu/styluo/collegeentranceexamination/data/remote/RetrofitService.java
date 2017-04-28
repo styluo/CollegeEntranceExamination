@@ -3,6 +3,7 @@ package edu.shu.styluo.collegeentranceexamination.data.remote;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.CollegeByMajor;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.HotNews;
 import edu.shu.styluo.collegeentranceexamination.data.remote.entity.NewsDetail;
+import edu.shu.styluo.collegeentranceexamination.data.remote.entity.WishRankCollege;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -28,4 +29,8 @@ public interface RetrofitService {
     //根据专业代码查询开设高校
     @GET("/pro/major_queryAllUnivByMajor")
     Observable<CollegeByMajor> getCollegeByMajor(@Query("major.majorCode") String majorId, @Query("page") int page);
+
+    //获取校友会排名前20
+    @GET("/pro/rank_queryXYHRank")
+    Observable<WishRankCollege> getWishRankCollegeXyh();
 }

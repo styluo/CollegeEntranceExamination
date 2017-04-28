@@ -51,4 +51,7 @@
 
     <!--WishFragment-->
     <dimen name="wish_btn_margin">10dp</dimen>
+
+    <!--WishDetailListActivity-->
+    <dimen name="wish_detail_cv_margin">2dp</dimen>
 </resources>
