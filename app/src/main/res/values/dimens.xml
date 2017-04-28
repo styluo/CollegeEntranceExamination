@@ -48,4 +48,7 @@
     <dimen name="pw_major_detail_lw">320dp</dimen>
     <dimen name="pw_major_detail_lh">480dp</dimen>
     <dimen name="pw_cv_margin">2dp</dimen>
+
+    <!--WishFragment-->
+    <dimen name="wish_btn_margin">10dp</dimen>
 </resources>

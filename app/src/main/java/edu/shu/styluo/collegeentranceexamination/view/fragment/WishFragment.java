@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
 
 /**
@@ -14,11 +15,14 @@ import edu.shu.styluo.collegeentranceexamination.R;
  *@Author Created by 29043 on 2017/4/18.
  *@Time 2017.4.18
  */
-public class WishFragment extends Fragment {
+public class WishFragment extends Fragment{
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_wish, container, false);
+        View view = inflater.inflate(R.layout.fragment_wish, container, false);
+        ButterKnife.bind(this, view);
+
+        return view;
     }
 }

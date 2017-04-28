@@ -70,4 +70,10 @@
     <string name="tv_majorinfo_detail_college">开设高校</string>
     <string name="tv_majorinfo_detail_default">暂无信息</string>
     <string name="btn_majorinfo_detail">查看开设高校</string>
+    
+    <!--WishFragment-->
+    <string name="btn_wish_xyh">查询校友会排名前20</string>
+    <string name="btn_wish_wsl">查询武书连排名前20</string>
+    <string name="btn_wish_jd">查询交大排名前20</string>
+    <string name="btn_wish_qs">查询QS排名前20</string>
 </resources>
