@@ -67,4 +67,7 @@ dependencies {
 
     //引入日志库
     compile 'com.orhanobut:logger:1.15'
+
+    //引入官方流式布局
+    compile 'com.google.android:flexbox:0.3.0-alpha3'
 }

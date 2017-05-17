@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_recommend"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <EditText
+        android:id="@+id/et_recommend_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recommend_view_margin"
+        android:hint="请输入成绩"/>
+
+    <Spinner
+        android:id="@+id/spinner_recommend_province"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recommend_view_margin"
+        android:entries="@array/provincearr"
+        android:spinnerMode="dialog" />
+
+    <Spinner
+        android:id="@+id/spinner_recommend_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recommend_view_margin"
+        android:entries="@array/subjectarr"/>
+
+    <Button
+        android:id="@+id/btn_query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recommend_view_margin"
+        android:text="查询"/>
+
+
+</LinearLayout>

@@ -57,4 +57,10 @@
 
     <!--CollegeListActivity-->
     <dimen name="college_list_cv_margin">2dp</dimen>
+
+    <!--RecommendActivity-->
+    <dimen name="recommend_view_margin">10dp</dimen>
+
+    <!--RecommendCollegeActivity-->
+    <dimen name="recommend_college_cv_margin">2dp</dimen>
 </resources>
