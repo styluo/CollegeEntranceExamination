@@ -54,4 +54,7 @@
 
     <!--WishDetailListActivity-->
     <dimen name="wish_detail_cv_margin">2dp</dimen>
+
+    <!--CollegeListActivity-->
+    <dimen name="college_list_cv_margin">2dp</dimen>
 </resources>

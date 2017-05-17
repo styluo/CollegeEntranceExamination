@@ -19,9 +19,10 @@ import butterknife.ButterKnife;
 import edu.shu.styluo.collegeentranceexamination.R;
 import edu.shu.styluo.collegeentranceexamination.constant.FunType;
 import edu.shu.styluo.collegeentranceexamination.customview.CaptionedSquareLayout;
-import edu.shu.styluo.collegeentranceexamination.view.activity.CollegeDetailActivity;
+import edu.shu.styluo.collegeentranceexamination.view.activity.CollegeListActivity;
 import edu.shu.styluo.collegeentranceexamination.view.activity.MajorListActivity;
 import edu.shu.styluo.collegeentranceexamination.view.activity.MajorSimulationActivity;
+import edu.shu.styluo.collegeentranceexamination.view.activity.RecommendActivity;
 import edu.shu.styluo.collegeentranceexamination.view.adapter.HomeGridViewAdapter;
 
 /**
@@ -64,7 +65,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if(mHomeGridViewAdapter.getItem(position) == FunType.COLLEGES){ //直接跳转
-            Intent intent = new Intent(getActivity(), CollegeDetailActivity.class);
+            Intent intent = new Intent(getActivity(), CollegeListActivity.class);
             startActivity(intent);
         }else if(mHomeGridViewAdapter.getItem(position) == FunType.SIMULATIONS) { //动画转场
             final CaptionedSquareLayout captionedSquareLayout = (CaptionedSquareLayout) view;
@@ -79,8 +80,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         }else if(mHomeGridViewAdapter.getItem(position) == FunType.MAJORS) {
             Intent intent = new Intent(getActivity(), MajorListActivity.class);
             startActivity(intent);
-        }else{
-                Snackbar.make(view, getResources().getString(mHomeGridViewAdapter.getItem(position).getFunDesId()) + "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
+        }else if(mHomeGridViewAdapter.getItem(position) == FunType.RECOMMENDS){
+            Intent intent = new Intent(getActivity(), RecommendActivity.class);
+            startActivity(intent);
+        } else{
+            Snackbar.make(view, getResources().getString(mHomeGridViewAdapter.getItem(position).getFunDesId()) + "点击事件响应，有待开发", Snackbar.LENGTH_SHORT).show();
         }
     }
 }

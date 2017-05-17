@@ -22,7 +22,7 @@
         <activity android:name=".view.activity.GuideActivity"/>
         <activity android:name=".view.activity.MainActivity"/>
         <activity android:name=".view.activity.CollegeDetailActivity"
-            android:parentActivityName=".view.activity.MainActivity"/>
+            android:parentActivityName=".view.activity.CollegeListActivity"/>
 
         <activity android:name=".view.activity.MajorSimulationActivity"
             android:parentActivityName=".view.activity.MainActivity"/>
@@ -37,6 +37,12 @@
             android:parentActivityName=".view.activity.MajorListActivity"/>
 
         <activity android:name=".view.activity.WishDetailListActivity"
+            android:parentActivityName=".view.activity.MainActivity"/>
+
+        <activity android:name=".view.activity.CollegeListActivity"
+            android:parentActivityName=".view.activity.MainActivity"/>
+
+        <activity android:name=".view.activity.RecommendActivity"
             android:parentActivityName=".view.activity.MainActivity"/>
     </application>
 
